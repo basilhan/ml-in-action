@@ -1,0 +1,36 @@
+## Simple Regression
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+data <- read.table("https://raw.githubusercontent.com/basilhan/datasets/master/slr.csv",
+                   sep=",",
+                   header=FALSE,
+                   )
+names(data) <- c("x", "y")
+```
+
+```{r}
+head(data)
+```
+```{r}
+options(repr.plot.width=5, repr.plot.height=3)
+ggplot(data, aes(x=x, y=y)) + geom_point()
+```
+
+```{r}
+model <- lm(y ~ x, data=data)
+model
+```
+
+```{r}
+summary(model)
+```
+
+```{r}
+options(repr.plot.width=5, repr.plot.height=3)
+plot(model)
+```
+
